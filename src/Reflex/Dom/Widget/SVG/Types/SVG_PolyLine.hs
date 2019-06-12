@@ -11,19 +11,26 @@ module Reflex.Dom.Widget.SVG.Types.SVG_PolyLine
   , svg_polyLine_path
   , svg_polyLine_start
   , makePolyLineProps
+  , polyLine_
   ) where
 
-import           Control.Lens                    (Lens')
+import           Control.Lens                      (Lens')
 
-import           Data.Map                        (Map)
+import           Data.Map                          (Map)
 
-import           Data.Text                       (Text)
+import           Data.Text                         (Text)
 
-import           Data.List.NonEmpty              (NonEmpty, (<|))
+import           Data.List.NonEmpty                (NonEmpty, (<|))
 
-import           Reflex.Dom.Core                 ((=:))
+import           Reflex                            (Dynamic)
+import qualified Reflex                            as R
+import           Reflex.Dom.Core                   (DomBuilder, DomBuilderSpace,
+                                                    Element, EventResult,
+                                                    PostBuild, (=:))
 
-import           Reflex.Dom.Widget.SVG.Types.Pos (Pos, X, Y, makePointsProp)
+
+import           Reflex.Dom.Widget.SVG.Types.Pos   (Pos, X, Y, makePointsProp)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl (svgElDynAttr')
 
 -- | Properties for the <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polyline \<polyline\>> element.
 data SVG_PolyLine = SVG_PolyLine
@@ -50,3 +57,19 @@ makePolyLineProps
   -> Map Text Text
 makePolyLineProps SVG_PolyLine {..} =
   "points" =: makePointsProp (_svg_polyLine_start <| _svg_polyLine_path)
+
+
+polyLine_
+  :: ( DomBuilder t m
+     , PostBuild t m
+     , R.Reflex t
+     )
+  => Map Text Text      -- properties
+  -> Dynamic t SVG_PolyLine -- dAttributes
+  -> m a  -- children
+  -> m ( Element EventResult (DomBuilderSpace m) t, a)
+polyLine_ attrs dPolyLine children =
+  svgElDynAttr'
+    "polyline"
+    ((mappend attrs . makePolyLineProps) <$> dPolyLine)
+    children

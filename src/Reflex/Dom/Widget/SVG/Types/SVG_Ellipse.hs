@@ -7,6 +7,7 @@ module Reflex.Dom.Widget.SVG.Types.SVG_Ellipse
   , svg_ellipse_center_x
   , svg_ellipse_center_y
   , makeEllipseProps
+  , ellipse_
   ) where
 
 import           Control.Lens                         (Lens', at, (?~), (^.))
@@ -16,10 +17,17 @@ import           Data.Map                             (Map)
 
 import           Data.Text                            (Text)
 
+import           Reflex                               (Dynamic)
+import qualified Reflex                               as R
+import           Reflex.Dom.Core                      (DomBuilder,
+                                                       DomBuilderSpace, Element,
+                                                       EventResult, PostBuild)
+
 import           Reflex.Dom.Widget.SVG.Types.Internal (wrappedToText)
 import           Reflex.Dom.Widget.SVG.Types.Pos      (CenterX, CenterY, Pos, X,
                                                        Y)
 import           Reflex.Dom.Widget.SVG.Types.Radius   (Radius)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl    (svgElDynAttr')
 
 -- | Properties for the <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/ellipse \<ellipse\>> element.
 data SVG_Ellipse = SVG_Ellipse
@@ -63,3 +71,19 @@ makeEllipseProps e = mempty
   & at "cy" ?~ e ^. svg_ellipse_center_y . wrappedToText
   & at "rx" ?~ e ^. svg_ellipse_radius_x . wrappedToText
   & at "ry" ?~ e ^. svg_ellipse_radius_y . wrappedToText
+
+
+ellipse_
+  :: ( DomBuilder t m
+     , PostBuild t m
+     , R.Reflex t
+     )
+  => Map Text Text      -- properties
+  -> Dynamic t SVG_Ellipse -- dAttributes
+  -> m a  -- children
+  -> m ( Element EventResult (DomBuilderSpace m) t, a)
+ellipse_ attrs dEllipse children =
+  svgElDynAttr'
+    "ellipse"
+    ((mappend attrs . makeEllipseProps) <$> dEllipse)
+    children

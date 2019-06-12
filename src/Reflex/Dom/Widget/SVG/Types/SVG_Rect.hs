@@ -9,6 +9,7 @@ module Reflex.Dom.Widget.SVG.Types.SVG_Rect
   , svg_rect_cornerRadius_x
   , svg_rect_cornerRadius_y
   , makeRectProps
+  , rect_
   )
   where
 
@@ -22,11 +23,20 @@ import           Data.Map                                 (Map)
 
 import           Data.Text                                (Text)
 
+import           Reflex                                   (Dynamic)
+import qualified Reflex                                   as R
+import           Reflex.Dom.Core                          (DomBuilder,
+                                                           DomBuilderSpace,
+                                                           Element, EventResult,
+                                                           PostBuild)
+
 import           Reflex.Dom.Widget.SVG.Types.CornerRadius (CornerRadius)
 import           Reflex.Dom.Widget.SVG.Types.Pos          (Pos, X, Y)
 
 import           Reflex.Dom.Widget.SVG.Types.Internal     (Height, Width,
                                                            wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl        (svgElDynAttr')
+
 
 -- | SVG <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect \<rect\>> properties
 data SVG_Rect = SVG_Rect
@@ -86,3 +96,19 @@ makeRectProps r = mempty
   & at "height" ?~ r ^. svg_rect_height . wrappedToText
   & at "rx" .~ r ^? svg_rect_cornerRadius_x . _Just . wrappedToText
   & at "ry" .~ r ^? svg_rect_cornerRadius_y . _Just . wrappedToText
+
+
+rect_
+  :: ( DomBuilder t m
+     , PostBuild t m
+     , R.Reflex t
+     )
+  => Map Text Text      -- properties
+  -> Dynamic t SVG_Rect -- dAttributes
+  -> m a  -- children
+  -> m ( Element EventResult (DomBuilderSpace m) t, a)
+rect_ attrs dRect children =
+  svgElDynAttr'
+    "rect"
+    ((mappend attrs . makeRectProps) <$> dRect)
+    children

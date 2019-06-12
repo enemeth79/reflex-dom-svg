@@ -32,7 +32,7 @@ executable examples
                      , reflex-dom-svg
 
   hs-source-dirs:      src
-  main-is:             Example.lhs
+  main-is:             Example.hs
 
   ghc-options:         -Wall -O2
 

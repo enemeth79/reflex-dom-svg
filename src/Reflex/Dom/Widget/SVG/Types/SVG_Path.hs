@@ -35,6 +35,7 @@ module Reflex.Dom.Widget.SVG.Types.SVG_Path
   , _Z
   , makePathProps
   , pathCommandToText
+  , path_
   ) where
 
 import           Control.Lens                         (Prism', Rewrapped,
@@ -51,10 +52,16 @@ import           Data.Semigroup                       (Semigroup (..), (<>))
 import           Data.Text                            (Text)
 import qualified Data.Text                            as Text
 
-import           Reflex.Dom.Core                      ((=:))
+import           Reflex                               (Dynamic)
+import qualified Reflex                               as R
+import           Reflex.Dom.Core                      (DomBuilder,
+                                                       DomBuilderSpace, Element,
+                                                       EventResult, PostBuild,
+                                                       (=:))
 
 import           Reflex.Dom.Widget.SVG.Types.Internal (wrappedToText)
 import           Reflex.Dom.Widget.SVG.Types.Pos      (Pos, X, Y)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl    (svgElDynAttr')
 
 -- | For a bit of brevity we wrap a combined X,Y position in a tuple tucked in a newtype.
 newtype P =
@@ -235,3 +242,19 @@ makePathProps
   -> Map Text Text
 makePathProps (D p) =
   ( "d" =: ) . Text.unwords . toList $ pathCommandToText <$> p
+
+
+path_
+  :: ( DomBuilder t m
+     , PostBuild t m
+     , R.Reflex t
+     )
+  => Map Text Text      -- properties
+  -> Dynamic t SVG_Path -- dAttributes
+  -> m a  -- children
+  -> m ( Element EventResult (DomBuilderSpace m) t, a)
+path_ attrs dPath children =
+  svgElDynAttr'
+    "path"
+    ((mappend attrs . makePathProps) <$> dPath)
+    children

@@ -16,6 +16,7 @@ module Reflex.Dom.Widget.SVG.Types.SVG_Animate
   , svg_animate_dur
   , svg_animate_repeatCount
   , makeAnimateProps
+  , animate_
   ) where
 
 import           Control.Lens                         (Lens', Prism', Rewrapped,
@@ -34,9 +35,17 @@ import           Data.Map                             (Map)
 
 import           GHC.Word                             (Word16)
 
+import           Reflex                               (Dynamic)
+import qualified Reflex                               as R
+import           Reflex.Dom.Core                      (DomBuilder,
+                                                       DomBuilderSpace, Element,
+                                                       EventResult, PostBuild)
+
 import           Reflex.Dom.Widget.SVG.Types.Internal (AttributeName (..),
                                                        RepeatCount (..),
                                                        wrappedToText)
+
+import           Reflex.Dom.Widget.SVG.Types.SVGEl    (svgElDynAttr_)
 
 -- | <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/from from> attribute
 newtype AnimFrom      = AnimFrom Word16 deriving (Eq, Show)
@@ -137,3 +146,17 @@ makeAnimateProps a = mempty
   & at "to"            ?~ a ^. svg_animate_to . wrappedToText
   & at "dur"           ?~ a ^. svg_animate_dur . to animDurationToText
   & at "repeatCount"   ?~ a ^. svg_animate_repeatCount . to show . packed
+
+
+animate_
+  :: ( DomBuilder t m
+     , PostBuild t m
+     , R.Reflex t
+     )
+  => Dynamic t SVG_Animate -- dAttributes
+  -- -> m a  -- children
+  -> m ( Element EventResult (DomBuilderSpace m) t)
+animate_ dAttrs =
+  svgElDynAttr_
+    "animate"
+    (makeAnimateProps <$> dAttrs)

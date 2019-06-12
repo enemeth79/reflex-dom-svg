@@ -6,6 +6,7 @@ module Reflex.Dom.Widget.SVG.Types.SVG_Circle
   , svg_circle_pos_centerY
   , svg_circle_radius
   , makeCircleProps
+  , circle_
   ) where
 
 import           Control.Lens                         (Lens', at, (?~), (^.))
@@ -16,9 +17,16 @@ import           Data.Map                             (Map)
 
 import           Data.Text                            (Text)
 
+import           Reflex                               (Dynamic)
+import qualified Reflex                               as R
+import           Reflex.Dom.Core                      (DomBuilder,
+                                                       DomBuilderSpace, Element,
+                                                       EventResult, PostBuild)
+
 import           Reflex.Dom.Widget.SVG.Types.Internal (wrappedToText)
 import           Reflex.Dom.Widget.SVG.Types.Pos      (CenterX, CenterY, Pos)
 import           Reflex.Dom.Widget.SVG.Types.Radius   (Radius)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl    (svgElDynAttr')
 
 -- | Properties for the <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle \<circle\>> element.
 data SVG_Circle = SVG_Circle
@@ -55,3 +63,19 @@ makeCircleProps c = mempty
   & at "cx" ?~ c ^. svg_circle_pos_centerX . wrappedToText
   & at "cy" ?~ c ^. svg_circle_pos_centerY . wrappedToText
   & at "r"  ?~ c ^. svg_circle_radius . wrappedToText
+
+
+circle_
+  :: ( DomBuilder t m
+     , PostBuild t m
+     , R.Reflex t
+     )
+  => Map Text Text  -- properties
+  -> Dynamic t SVG_Circle -- dAttributes
+  -> m a  -- children
+  -> m ( Element EventResult (DomBuilderSpace m) t, a)
+circle_ attrs dCircle children =
+  svgElDynAttr'
+    "circle"
+    ((mappend attrs . makeCircleProps) <$> dCircle)
+    children

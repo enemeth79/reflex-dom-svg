@@ -25,6 +25,7 @@ library
                      , Reflex.Dom.Widget.SVG.Types.Pos
                      , Reflex.Dom.Widget.SVG.Types.CornerRadius
                      , Reflex.Dom.Widget.SVG.Types.Radius
+                     , Reflex.Dom.Widget.SVG.Types.SVGEl
                      , Reflex.Dom.Widget.SVG.Types.SVG_Path
                      , Reflex.Dom.Widget.SVG.Types.SVG_Rect
                      , Reflex.Dom.Widget.SVG.Types.SVG_Circle
@@ -33,6 +34,8 @@ library
                      , Reflex.Dom.Widget.SVG.Types.SVG_Polygon
                      , Reflex.Dom.Widget.SVG.Types.SVG_PolyLine
                      , Reflex.Dom.Widget.SVG.Types.SVG_Animate
+                     , Reflex.Dom.Widget.SVG.Types.SVG_Svg
+                     , Reflex.Dom.Widget.SVG.Types.ViewBox
 
   build-depends:       base >=4.9 && <=4.12
                      , text >= 1.2 && < 1.3

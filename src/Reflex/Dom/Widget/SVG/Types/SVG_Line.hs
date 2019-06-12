@@ -5,6 +5,7 @@ module Reflex.Dom.Widget.SVG.Types.SVG_Line
   , svg_line_pos_end
   , svg_line_pos_start
   , makeSVGLineProps
+  , line_
   ) where
 
 import           Control.Lens                         (Lens', at, (?~), (^.),
@@ -14,10 +15,17 @@ import           Data.Function                        ((&))
 
 import           Data.Map                             (Map)
 
+import           Reflex                               (Dynamic)
+import qualified Reflex                               as R
+import           Reflex.Dom.Core                      (DomBuilder,
+                                                       DomBuilderSpace, Element,
+                                                       EventResult, PostBuild)
+
 import           Data.Text                            (Text)
 
 import           Reflex.Dom.Widget.SVG.Types.Internal (wrappedToText)
 import           Reflex.Dom.Widget.SVG.Types.Pos      (Pos, X, Y)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl    (svgElDynAttr')
 
 -- | Properties for the <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line \<line\>> element.
 data SVG_Line = SVG_Line
@@ -47,3 +55,19 @@ makeSVGLineProps l = mempty
   & at "y1" ?~ l ^. svg_line_pos_start . _2 . wrappedToText
   & at "x2" ?~ l ^. svg_line_pos_end . _1 . wrappedToText
   & at "y2" ?~ l ^. svg_line_pos_end . _2 . wrappedToText
+
+
+line_
+  :: ( DomBuilder t m
+     , PostBuild t m
+     , R.Reflex t
+     )
+  => Map Text Text      -- properties
+  -> Dynamic t SVG_Line -- dAttributes
+  -> m a  -- children
+  -> m ( Element EventResult (DomBuilderSpace m) t, a)
+line_ attrs dLine children =
+  svgElDynAttr'
+    "line"
+    ((mappend attrs . makeSVGLineProps) <$> dLine)
+    children

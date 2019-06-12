@@ -10,17 +10,23 @@ module Reflex.Dom.Widget.SVG.Types.SVG_Polygon
   , svg_polygon_path
   , svg_polygon_start
   , makePolygonProps
+  , polygon_
   ) where
 
-import           Control.Lens                    (Lens')
+import           Control.Lens                      (Lens')
 
-import           Data.List.NonEmpty              (NonEmpty, (<|))
-import           Data.Map                        (Map)
-import           Data.Text                       (Text)
+import           Data.List.NonEmpty                (NonEmpty, (<|))
+import           Data.Map                          (Map)
+import           Data.Text                         (Text)
 
-import           Reflex.Dom.Core                 ((=:))
+import           Reflex                            (Dynamic)
+import qualified Reflex                            as R
+import           Reflex.Dom.Core                   (DomBuilder, DomBuilderSpace,
+                                                    Element, EventResult,
+                                                    PostBuild, (=:))
 
-import           Reflex.Dom.Widget.SVG.Types.Pos (Pos, X, Y, makePointsProp)
+import           Reflex.Dom.Widget.SVG.Types.Pos   (Pos, X, Y, makePointsProp)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl (svgElDynAttr')
 
 -- | Properties for the <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon \<polygon\>> element.
 data SVG_Polygon = SVG_Polygon
@@ -45,3 +51,19 @@ makePolygonProps
   -> Map Text Text
 makePolygonProps SVG_Polygon {..} =
   "points" =: makePointsProp (_svg_polygon_start <| _svg_polygon_path)
+
+
+polygon_
+  :: ( DomBuilder t m
+     , PostBuild t m
+     , R.Reflex t
+     )
+  => Map Text Text      -- properties
+  -> Dynamic t SVG_Polygon -- dAttributes
+  -> m a  -- children
+  -> m ( Element EventResult (DomBuilderSpace m) t, a)
+polygon_ attrs dPolygon children =
+  svgElDynAttr'
+    "polygon"
+    ((mappend attrs . makePolygonProps) <$> dPolygon)
+    children

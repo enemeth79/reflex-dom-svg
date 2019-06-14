@@ -34,7 +34,17 @@ exampleUsage = do
       S.SVG_Svg
         (S.Width 400)
         (S.Height 300)
-        Nothing
+        -- Nothing  -- with no viewbox
+        (Just  -- with viewbox
+          (S.ViewBox 0 0 (S.Width 30) (S.Height 40)))
+        -- Nothing -- no preserveAspectRatio
+        (Just  -- with preserveAspectRatio
+          (S.PreserveAspectRatio
+            S.Align_XMaxYMax
+            Nothing  -- with no meet|slice
+            -- (Just S.MeetOrSlice_Meet)  -- with meet|slice
+          )
+        )
 
     -- Create a normal ``Map`` of HTML attributes to apply to the shapes
     attrsRect1 = mempty

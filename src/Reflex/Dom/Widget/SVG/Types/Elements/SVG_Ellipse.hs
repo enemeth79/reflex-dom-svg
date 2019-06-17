@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 -- | Types and functions for the \<ellipse\> SVG element.
-module Reflex.Dom.Widget.SVG.Types.SVG_Ellipse
+module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Ellipse
   ( SVG_Ellipse (..)
   , svg_ellipse_radius_x
   , svg_ellipse_radius_y

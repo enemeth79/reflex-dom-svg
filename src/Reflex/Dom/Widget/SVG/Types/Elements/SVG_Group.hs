@@ -3,7 +3,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE OverloadedStrings     #-}
 -- | Types and functions for the \<g\> SVG element.
-module Reflex.Dom.Widget.SVG.Types.SVG_Group
+module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Group
   ( SVG_Group (..)
   , makeGroupProps
   , group_
@@ -13,7 +13,6 @@ module Reflex.Dom.Widget.SVG.Types.SVG_Group
 import           Data.Text                                       (Text)
 
 import           Data.Map                                        (Map)
-import qualified Data.Map                                        as Map
 
 import           Reflex                                          (Dynamic)
 import qualified Reflex                                          as R

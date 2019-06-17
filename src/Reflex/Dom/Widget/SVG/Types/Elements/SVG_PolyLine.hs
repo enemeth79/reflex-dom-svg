@@ -6,7 +6,7 @@
 -- connecting several points. Typically a polyline is used to create open shapes
 -- as the last point doesn't have to be connected to the first point. For closed
 -- shapes see the \<polygon\> element.
-module Reflex.Dom.Widget.SVG.Types.SVG_PolyLine
+module Reflex.Dom.Widget.SVG.Types.Elements.SVG_PolyLine
   ( SVG_PolyLine (..)
   , svg_polyLine_path
   , svg_polyLine_start

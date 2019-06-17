@@ -5,7 +5,7 @@
 -- The \<polygon\> element defines a closed shape consisting of a set of connected
 -- straight line segments. The last point is connected to the first point. For
 -- open shapes see the \<polyline\> element.
-module Reflex.Dom.Widget.SVG.Types.SVG_Polygon
+module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Polygon
   ( SVG_Polygon (..)
   , svg_polygon_path
   , svg_polygon_start

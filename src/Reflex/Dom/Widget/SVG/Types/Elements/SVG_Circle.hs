@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 -- | Types and functions for the \<circle\> SVG element.
-module Reflex.Dom.Widget.SVG.Types.SVG_Circle
+module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Circle
   ( SVG_Circle (..)
   , svg_circle_pos_centerX
   , svg_circle_pos_centerY

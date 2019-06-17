@@ -3,7 +3,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE OverloadedStrings     #-}
 -- | Types and functions for the \<svg\> SVG element.
-module Reflex.Dom.Widget.SVG.Types.SVG_Svg
+module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Svg
   ( SVG_Svg (..)
   , svg_root_width
   , svg_root_height

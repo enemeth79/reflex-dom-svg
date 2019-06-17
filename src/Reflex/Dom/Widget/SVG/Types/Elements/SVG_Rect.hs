@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 -- | Types and lenses for the \<rect\> SVG element.
-module Reflex.Dom.Widget.SVG.Types.SVG_Rect
+module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Rect
   ( SVG_Rect (..)
   , svg_rect_pos_x
   , svg_rect_pos_y

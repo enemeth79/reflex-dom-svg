@@ -4,7 +4,7 @@
 {-# LANGUAGE OverloadedStrings     #-}
 {-# LANGUAGE TypeFamilies          #-}
 -- | Types and functions for the \<animate\> SVG element.
-module Reflex.Dom.Widget.SVG.Types.SVG_Animate
+module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Animate
   ( AnimFrom (..)
   , AnimTo (..)
   , AnimDuration (..)

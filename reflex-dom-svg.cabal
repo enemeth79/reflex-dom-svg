@@ -28,16 +28,17 @@ library
                      , Reflex.Dom.Widget.SVG.Types.Radius
                      , Reflex.Dom.Widget.SVG.Types.SVGEl
                      , Reflex.Dom.Widget.SVG.Types.ViewBox
-                     , Reflex.Dom.Widget.SVG.Types.SVG_Path
-                     , Reflex.Dom.Widget.SVG.Types.SVG_Rect
-                     , Reflex.Dom.Widget.SVG.Types.SVG_Circle
-                     , Reflex.Dom.Widget.SVG.Types.SVG_Ellipse
-                     , Reflex.Dom.Widget.SVG.Types.SVG_Group
-                     , Reflex.Dom.Widget.SVG.Types.SVG_Line
-                     , Reflex.Dom.Widget.SVG.Types.SVG_Polygon
-                     , Reflex.Dom.Widget.SVG.Types.SVG_PolyLine
-                     , Reflex.Dom.Widget.SVG.Types.SVG_Animate
-                     , Reflex.Dom.Widget.SVG.Types.SVG_Svg
+                     , Reflex.Dom.Widget.SVG.Types.Elements
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Animate
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Circle
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Ellipse
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Group
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Line
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Path
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Polygon
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_PolyLine
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Rect
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Svg
 
   build-depends:       base >=4.9 && <=4.12
                      , text >= 1.2 && < 1.3

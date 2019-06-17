@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 -- | Types and functions for \<line\> SVG element.
-module Reflex.Dom.Widget.SVG.Types.SVG_Line
+module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Line
   ( SVG_Line (..)
   , svg_line_pos_end
   , svg_line_pos_start

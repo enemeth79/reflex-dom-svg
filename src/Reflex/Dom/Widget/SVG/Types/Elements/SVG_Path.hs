@@ -7,7 +7,7 @@
 {-# LANGUAGE OverloadedStrings          #-}
 {-# LANGUAGE TypeFamilies               #-}
 -- | Types and functions for constructing type-safe SVG \<path\> properties.
-module Reflex.Dom.Widget.SVG.Types.SVG_Path
+module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Path
   ( PathCommandType (..)
   , PathCommand (..)
   , PathCommandRelativity (..)

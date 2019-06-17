@@ -32,6 +32,7 @@ library
                      , Reflex.Dom.Widget.SVG.Types.SVG_Rect
                      , Reflex.Dom.Widget.SVG.Types.SVG_Circle
                      , Reflex.Dom.Widget.SVG.Types.SVG_Ellipse
+                     , Reflex.Dom.Widget.SVG.Types.SVG_Group
                      , Reflex.Dom.Widget.SVG.Types.SVG_Line
                      , Reflex.Dom.Widget.SVG.Types.SVG_Polygon
                      , Reflex.Dom.Widget.SVG.Types.SVG_PolyLine

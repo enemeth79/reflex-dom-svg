@@ -34,17 +34,17 @@ exampleUsage = do
       S.SVG_Svg
         (S.Width 400)
         (S.Height 300)
-        -- Nothing  -- with no viewbox
-        (Just  -- with viewbox
-          (S.ViewBox 0 0 (S.Width 30) (S.Height 40)))
-        -- Nothing -- no preserveAspectRatio
-        (Just  -- with preserveAspectRatio
-          (S.PreserveAspectRatio
-            S.Align_XMaxYMax
-            Nothing  -- with no meet|slice
-            -- (Just S.MeetOrSlice_Meet)  -- with meet|slice
-          )
-        )
+        Nothing  -- with no viewbox
+        -- (Just  -- with viewbox
+        --   (S.ViewBox 0 0 (S.Width 30) (S.Height 40)))
+        Nothing -- no preserveAspectRatio
+        -- (Just  -- with preserveAspectRatio
+        --   (S.PreserveAspectRatio
+        --     S.Align_XMaxYMax
+        --     Nothing  -- with no meet|slice
+        --     -- (Just S.MeetOrSlice_Meet)  -- with meet|slice
+        --   )
+        -- )
 
     -- Create a normal ``Map`` of HTML attributes to apply to the shapes
     attrsRect1 = mempty
@@ -157,6 +157,16 @@ exampleUsage = do
     --              Q 90,60 50,90
     --              Q 10,60 10,30 z"/>.
 
+    -- Build a ``<g>``.
+    dGroup = pure $
+      S.SVG_Group
+    attrsGroup = mempty
+      & at "id" ?~ "g1"
+      & at "fill" ?~ "white"
+      & at "stroke" ?~ "green"
+      & at "stroke-width" ?~ "5"
+    -- This is the same as writing: <g id="g1" fill="white" stroke="green" "stroke-width"="5">
+
 
     -- We can also build some ``Dynamic`` animation element properties:
     dAnimX = pure $
@@ -187,6 +197,21 @@ exampleUsage = do
     _ <- S.line_ attrsRB dLine RD.blank
     _ <- S.polyLine_ attrsOrange dPolyLine RD.blank
     _ <- S.polygon_ attrsRB dPolygon RD.blank
+    _ <- S.group_ attrsGroup dGroup $ do
+      _ <- S.circle_ mempty
+        (pure $
+          S.SVG_Circle
+            (S._PosCenterX # 240.0)
+            (S._PosCenterY # 240.0)
+            (S._Radius # 25.0))
+        RD.blank
+      S.circle_ mempty
+        (pure $
+          S.SVG_Circle
+            (S._PosCenterX # 260.0)
+            (S._PosCenterY # 260.0)
+            (S._Radius # 25.0))
+        RD.blank
     _ <- S.path_ attrsRB dPath RD.blank
     S.rect_ attrsYG dRect3
       (S.animate_ dAnimX)  -- animate

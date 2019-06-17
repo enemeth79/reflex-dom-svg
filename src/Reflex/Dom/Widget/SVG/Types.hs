@@ -13,6 +13,7 @@ module Reflex.Dom.Widget.SVG.Types
   , module Reflex.Dom.Widget.SVG.Types.SVG_Animate
   , module Reflex.Dom.Widget.SVG.Types.SVG_Circle
   , module Reflex.Dom.Widget.SVG.Types.SVG_Ellipse
+  , module Reflex.Dom.Widget.SVG.Types.SVG_Group
   , module Reflex.Dom.Widget.SVG.Types.SVG_Line
   , module Reflex.Dom.Widget.SVG.Types.SVG_Path
   , module Reflex.Dom.Widget.SVG.Types.SVG_Polygon
@@ -34,6 +35,7 @@ import           Reflex.Dom.Widget.SVG.Types.ViewBox
 import           Reflex.Dom.Widget.SVG.Types.SVG_Animate
 import           Reflex.Dom.Widget.SVG.Types.SVG_Circle
 import           Reflex.Dom.Widget.SVG.Types.SVG_Ellipse
+import           Reflex.Dom.Widget.SVG.Types.SVG_Group
 import           Reflex.Dom.Widget.SVG.Types.SVG_Line
 import           Reflex.Dom.Widget.SVG.Types.SVG_Path
 import           Reflex.Dom.Widget.SVG.Types.SVG_Polygon

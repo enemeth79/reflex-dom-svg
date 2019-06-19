@@ -9,14 +9,12 @@ module Reflex.Dom.Widget.SVG.Types.Internal
   , Height (..)
   , AttributeName (..)
   , RepeatCount (..)
-  , wrappedToText
   ) where
 
-import           Control.Lens   (Contravariant, Rewrapped, Wrapped (..), iso,
-                                 to, _Wrapped)
+import           Control.Lens (Rewrapped, Wrapped (..), iso, to, _Wrapped)
 
-import           Data.Text      (Text)
-import           Data.Text.Lens (IsText, packed)
+import           Data.Text    (Text)
+
 
 -- | Wrap the @Float@ value with something more meaningful.
 newtype Width         = Width Float deriving (Eq, Show)
@@ -49,19 +47,3 @@ data RepeatCount
 instance Show RepeatCount where
   show (NumOfTimes n) = show n
   show Indefinite     = "indefinite"
-
--- | Helper function to convert a @Wrapped@ value to a @Text@ value.
-wrappedToText
-  :: ( Unwrapped t ~ Unwrapped s
-     , IsText t1
-     , Contravariant f
-     , Functor f
-     , Rewrapped t s
-     , Rewrapped s t
-     , Show (Unwrapped s)
-     )
-  => (t1 -> f t1)
-  -> s
-  -> f t
-wrappedToText =
-  _Wrapped . to show . packed

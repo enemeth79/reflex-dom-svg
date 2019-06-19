@@ -8,24 +8,26 @@ module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Line
   , line_
   ) where
 
-import           Control.Lens                         (Lens', at, (?~), (^.),
-                                                       _1, _2)
+import           Control.Lens                                (Lens', at, (?~),
+                                                              (^.), _1, _2)
 
-import           Data.Function                        ((&))
+import           Data.Function                               ((&))
 
-import           Data.Map                             (Map)
+import           Data.Map                                    (Map)
 
-import           Reflex                               (Dynamic)
-import qualified Reflex                               as R
-import           Reflex.Dom.Core                      (DomBuilder,
-                                                       DomBuilderSpace, Element,
-                                                       EventResult, PostBuild)
+import           Reflex                                      (Dynamic)
+import qualified Reflex                                      as R
+import           Reflex.Dom.Core                             (DomBuilder,
+                                                              DomBuilderSpace,
+                                                              Element,
+                                                              EventResult,
+                                                              PostBuild)
 
-import           Data.Text                            (Text)
+import           Data.Text                                   (Text)
 
-import           Reflex.Dom.Widget.SVG.Types.Internal (wrappedToText)
-import           Reflex.Dom.Widget.SVG.Types.Pos      (Pos, X, Y)
-import           Reflex.Dom.Widget.SVG.Types.SVGEl    (svgElDynAttr')
+import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.Pos             (Pos, X, Y)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl           (svgElDynAttr')
 
 -- | Properties for the <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line \<line\>> element.
 data SVG_Line = SVG_Line

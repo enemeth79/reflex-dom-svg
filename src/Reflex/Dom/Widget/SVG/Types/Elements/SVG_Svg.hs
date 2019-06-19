@@ -31,8 +31,9 @@ import           Reflex.Dom.Core                                 (DomBuilder, Do
                                                                   EventResult,
                                                                   PostBuild)
 
-import           Reflex.Dom.Widget.SVG.Types.Internal            (Height, Width,
-                                                                  wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.Internal            (Height, Width)
+import           Reflex.Dom.Widget.SVG.Types.Internal.Helper     (wrappedToText)
+
 import           Reflex.Dom.Widget.SVG.Types.PreserveAspectRatio
 import           Reflex.Dom.Widget.SVG.Types.SVGEl               (svgElDynAttr')
 import           Reflex.Dom.Widget.SVG.Types.ViewBox

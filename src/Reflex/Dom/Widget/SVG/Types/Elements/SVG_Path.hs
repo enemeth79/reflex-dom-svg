@@ -38,30 +38,33 @@ module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Path
   , path_
   ) where
 
-import           Control.Lens                         (Prism', Rewrapped,
-                                                       Wrapped (..), iso, prism,
-                                                       ( # ), (^.), _1, _2,
-                                                       _Wrapped)
+import           Control.Lens                                (Prism', Rewrapped,
+                                                              Wrapped (..), iso,
+                                                              prism, ( # ),
+                                                              (^.), _1, _2,
+                                                              _Wrapped)
 
-import           Data.Map                             (Map)
+import           Data.Map                                    (Map)
 
-import           Data.List.NonEmpty                   (NonEmpty, toList)
+import           Data.List.NonEmpty                          (NonEmpty, toList)
 
-import           Data.Semigroup                       (Semigroup (..), (<>))
+import           Data.Semigroup                              (Semigroup (..),
+                                                              (<>))
 
-import           Data.Text                            (Text)
-import qualified Data.Text                            as Text
+import           Data.Text                                   (Text)
+import qualified Data.Text                                   as Text
 
-import           Reflex                               (Dynamic)
-import qualified Reflex                               as R
-import           Reflex.Dom.Core                      (DomBuilder,
-                                                       DomBuilderSpace, Element,
-                                                       EventResult, PostBuild,
-                                                       (=:))
+import           Reflex                                      (Dynamic)
+import qualified Reflex                                      as R
+import           Reflex.Dom.Core                             (DomBuilder,
+                                                              DomBuilderSpace,
+                                                              Element,
+                                                              EventResult,
+                                                              PostBuild, (=:))
 
-import           Reflex.Dom.Widget.SVG.Types.Internal (wrappedToText)
-import           Reflex.Dom.Widget.SVG.Types.Pos      (Pos, X, Y)
-import           Reflex.Dom.Widget.SVG.Types.SVGEl    (svgElDynAttr')
+import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.Pos             (Pos, X, Y)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl           (svgElDynAttr')
 
 -- | For a bit of brevity we wrap a combined X,Y position in a tuple tucked in a newtype.
 newtype P =

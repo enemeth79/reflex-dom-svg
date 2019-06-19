@@ -13,29 +13,31 @@ module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Rect
   )
   where
 
-import           Control.Lens                             (Lens', at, (.~),
-                                                           (?~), (^.), (^?),
-                                                           _Just)
+import           Control.Lens                                (Lens', at, (.~),
+                                                              (?~), (^.), (^?),
+                                                              _Just)
 
-import           Data.Function                            ((&))
+import           Data.Function                               ((&))
 
-import           Data.Map                                 (Map)
+import           Data.Map                                    (Map)
 
-import           Data.Text                                (Text)
+import           Data.Text                                   (Text)
 
-import           Reflex                                   (Dynamic)
-import qualified Reflex                                   as R
-import           Reflex.Dom.Core                          (DomBuilder,
-                                                           DomBuilderSpace,
-                                                           Element, EventResult,
-                                                           PostBuild)
+import           Reflex                                      (Dynamic)
+import qualified Reflex                                      as R
+import           Reflex.Dom.Core                             (DomBuilder,
+                                                              DomBuilderSpace,
+                                                              Element,
+                                                              EventResult,
+                                                              PostBuild)
 
-import           Reflex.Dom.Widget.SVG.Types.CornerRadius (CornerRadius)
-import           Reflex.Dom.Widget.SVG.Types.Pos          (Pos, X, Y)
+import           Reflex.Dom.Widget.SVG.Types.CornerRadius    (CornerRadius)
+import           Reflex.Dom.Widget.SVG.Types.Pos             (Pos, X, Y)
 
-import           Reflex.Dom.Widget.SVG.Types.Internal     (Height, Width,
-                                                           wrappedToText)
-import           Reflex.Dom.Widget.SVG.Types.SVGEl        (svgElDynAttr')
+import           Reflex.Dom.Widget.SVG.Types.Internal        (Height, Width)
+import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
+
+import           Reflex.Dom.Widget.SVG.Types.SVGEl           (svgElDynAttr')
 
 
 -- | SVG <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect \<rect\>> properties

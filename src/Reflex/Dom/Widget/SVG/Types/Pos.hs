@@ -19,17 +19,17 @@ module Reflex.Dom.Widget.SVG.Types.Pos
   )
   where
 
-import           Control.Lens                         (Iso', Rewrapped,
-                                                       Wrapped (..), iso, (^.),
-                                                       _Wrapped)
+import           Control.Lens                                (Iso', Rewrapped,
+                                                              Wrapped (..), iso,
+                                                              (^.), _Wrapped)
 
-import           Data.Text                            (Text)
+import           Data.Text                                   (Text)
 
-import           Data.Semigroup                       ((<>))
+import           Data.Semigroup                              ((<>))
 
-import           Data.List.NonEmpty                   (NonEmpty)
+import           Data.List.NonEmpty                          (NonEmpty)
 
-import           Reflex.Dom.Widget.SVG.Types.Internal (wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
 
 -- | Types to help keep our respective coordinate types separate
 data X

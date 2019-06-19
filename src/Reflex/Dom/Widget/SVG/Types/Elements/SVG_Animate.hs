@@ -19,33 +19,38 @@ module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Animate
   , animate_
   ) where
 
-import           Control.Lens                         (Lens', Prism', Rewrapped,
-                                                       Unwrapped, Wrapped (..),
-                                                       at, iso, prism, to, (?~),
-                                                       (^.), _Wrapped)
+import           Control.Lens                                (Lens', Prism',
+                                                              Rewrapped,
+                                                              Unwrapped,
+                                                              Wrapped (..), at,
+                                                              iso, prism, to,
+                                                              (?~), (^.),
+                                                              _Wrapped)
 
-import           Data.Function                        ((&))
+import           Data.Function                               ((&))
 
-import           Data.Semigroup                       ((<>))
+import           Data.Semigroup                              ((<>))
 
-import           Data.Text                            (Text, pack)
-import           Data.Text.Lens                       (packed)
+import           Data.Text                                   (Text, pack)
+import           Data.Text.Lens                              (packed)
 
-import           Data.Map                             (Map)
+import           Data.Map                                    (Map)
 
-import           GHC.Word                             (Word16)
+import           GHC.Word                                    (Word16)
 
-import           Reflex                               (Dynamic)
-import qualified Reflex                               as R
-import           Reflex.Dom.Core                      (DomBuilder,
-                                                       DomBuilderSpace, Element,
-                                                       EventResult, PostBuild)
+import           Reflex                                      (Dynamic)
+import qualified Reflex                                      as R
+import           Reflex.Dom.Core                             (DomBuilder,
+                                                              DomBuilderSpace,
+                                                              Element,
+                                                              EventResult,
+                                                              PostBuild)
 
-import           Reflex.Dom.Widget.SVG.Types.Internal (AttributeName (..),
-                                                       RepeatCount (..),
-                                                       wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.Internal        (AttributeName (..),
+                                                              RepeatCount (..))
+import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
 
-import           Reflex.Dom.Widget.SVG.Types.SVGEl    (svgElDynAttr_)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl           (svgElDynAttr_)
 
 -- | <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/from from> attribute
 newtype AnimFrom      = AnimFrom Word16 deriving (Eq, Show)

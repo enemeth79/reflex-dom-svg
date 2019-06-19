@@ -10,24 +10,27 @@ module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Ellipse
   , ellipse_
   ) where
 
-import           Control.Lens                         (Lens', at, (?~), (^.))
+import           Control.Lens                                (Lens', at, (?~),
+                                                              (^.))
 
-import           Data.Function                        ((&))
-import           Data.Map                             (Map)
+import           Data.Function                               ((&))
+import           Data.Map                                    (Map)
 
-import           Data.Text                            (Text)
+import           Data.Text                                   (Text)
 
-import           Reflex                               (Dynamic)
-import qualified Reflex                               as R
-import           Reflex.Dom.Core                      (DomBuilder,
-                                                       DomBuilderSpace, Element,
-                                                       EventResult, PostBuild)
+import           Reflex                                      (Dynamic)
+import qualified Reflex                                      as R
+import           Reflex.Dom.Core                             (DomBuilder,
+                                                              DomBuilderSpace,
+                                                              Element,
+                                                              EventResult,
+                                                              PostBuild)
 
-import           Reflex.Dom.Widget.SVG.Types.Internal (wrappedToText)
-import           Reflex.Dom.Widget.SVG.Types.Pos      (CenterX, CenterY, Pos, X,
-                                                       Y)
-import           Reflex.Dom.Widget.SVG.Types.Radius   (Radius)
-import           Reflex.Dom.Widget.SVG.Types.SVGEl    (svgElDynAttr')
+import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.Pos             (CenterX, CenterY,
+                                                              Pos, X, Y)
+import           Reflex.Dom.Widget.SVG.Types.Radius          (Radius)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl           (svgElDynAttr')
 
 -- | Properties for the <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/ellipse \<ellipse\>> element.
 data SVG_Ellipse = SVG_Ellipse

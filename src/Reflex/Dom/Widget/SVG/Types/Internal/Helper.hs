@@ -5,11 +5,13 @@
 -- | Miscellaneous functions of the API.
 module Reflex.Dom.Widget.SVG.Types.Internal.Helper
   ( wrappedToText
+  , floatToText
+  , intToText
   ) where
 
-import           Control.Lens   (Contravariant, Rewrapped, Wrapped (..), to,
-                                 _Wrapped)
+import           Control.Lens   (Contravariant, Rewrapped, Wrapped (..), _Wrapped, to)
 
+import           Data.Text      (Text, pack)
 import           Data.Text.Lens (IsText, packed)
 
 
@@ -28,3 +30,11 @@ wrappedToText
   -> f t
 wrappedToText =
   _Wrapped . to show . packed
+
+
+
+floatToText :: String -> Float -> Text
+floatToText s = pack . (<> s) . show
+
+intToText :: String -> Integer -> Text
+intToText s = pack . (<> s) . show

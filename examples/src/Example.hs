@@ -17,6 +17,7 @@ import           Reflex.Dom                  (mainWidget)
 import           Reflex.Dom.Core             (DomBuilder, PostBuild)
 import qualified Reflex.Dom.Core             as RD
 
+import qualified Reflex.Dom.Widget.CSS       as S
 import qualified Reflex.Dom.Widget.SVG       as S
 import qualified Reflex.Dom.Widget.SVG.Types as S
 
@@ -32,7 +33,7 @@ exampleUsage = do
     -- Construct the ``<svg>`` element.
     dSvgProps = pure $
       S.SVG_Svg
-        (S.Width 400)
+        (S.Width (S.Length (S.Px 400)))
         (S.Height 300)
         Nothing  -- with no viewbox
         -- (Just  -- with viewbox
@@ -74,7 +75,7 @@ exampleUsage = do
       S.SVG_Rect
         (S._PosX # 40.0)
         (S._PosY # 40.0)
-        (S.Width 50.0)
+        (S.Width (S.Length (S.Px 50.0)))
         (S.Height 50.0)
         Nothing
         Nothing
@@ -89,7 +90,7 @@ exampleUsage = do
       S.SVG_Rect
         (S._PosX # 20.0)
         (S._PosY # 20.0)
-        (S.Width 50.0)
+        (S.Width (S.Length (S.Px 50.0)))
         (S.Height 50.0)
         (15.0 ^? from S._CornerRadiusX)
         (15.0 ^? from S._CornerRadiusY)

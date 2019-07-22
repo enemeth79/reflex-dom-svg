@@ -1,3 +1,4 @@
+{-# LANGUAGE KindSignatures    #-}
 {-# LANGUAGE OverloadedStrings #-}
 -- | Types and lenses for the \<rect\> SVG element.
 module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Rect
@@ -13,38 +14,40 @@ module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Rect
   )
   where
 
-import           Control.Lens                                (Lens', at, (.~),
-                                                              (?~), (^.), (^?),
-                                                              _Just)
+import           Control.Lens                                     (Lens', at,
+                                                                   (.~), (?~),
+                                                                   (^.), (^?),
+                                                                   _Just)
 
-import           Data.Function                               ((&))
+import           Data.Function                                    ((&))
 
-import           Data.Map                                    (Map)
+import           Data.Map                                         (Map)
 
-import           Data.Text                                   (Text)
+import           Data.Text                                        (Text)
 
-import           Reflex                                      (Dynamic)
-import qualified Reflex                                      as R
-import           Reflex.Dom.Core                             (DomBuilder,
-                                                              DomBuilderSpace,
-                                                              Element,
-                                                              EventResult,
-                                                              PostBuild)
+import qualified Reflex                                           as R
+import           Reflex                                           (Dynamic)
+import           Reflex.Dom.Core                                  (DomBuilder, DomBuilderSpace,
+                                                                   Element,
+                                                                   EventResult,
+                                                                   PostBuild)
 
-import           Reflex.Dom.Widget.SVG.Types.CornerRadius    (CornerRadius)
-import           Reflex.Dom.Widget.SVG.Types.Pos             (Pos, X, Y)
+import           Reflex.Dom.Widget.SVG.Types.CornerRadius         (CornerRadius)
+import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage (LengthOrPercentage (..))
 
-import           Reflex.Dom.Widget.SVG.Types.Internal        (Height, Width)
-import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.Properties.Width            (Width(..))
+import           Reflex.Dom.Widget.SVG.Types.Internal             (Height)
+import           Reflex.Dom.Widget.SVG.Types.Internal.Helper      (wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.Pos                  (Pos, X, Y)
 
-import           Reflex.Dom.Widget.SVG.Types.SVGEl           (svgElDynAttr')
+import           Reflex.Dom.Widget.SVG.Types.SVGEl                (svgElDynAttr')
 
 
 -- | SVG <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect \<rect\>> properties
 data SVG_Rect = SVG_Rect
   { _svg_rect_pos_x          :: Pos X -- ^ Top left X position
   , _svg_rect_pos_y          :: Pos Y -- ^ Top left Y position
-  , _svg_rect_width          :: Width
+  , _svg_rect_width          :: Width LengthOrPercentage
   , _svg_rect_height         :: Height
   , _svg_rect_cornerRadius_x :: Maybe (CornerRadius X) -- ^ Optional rounded corner radius
   , _svg_rect_cornerRadius_y :: Maybe (CornerRadius Y) -- ^ Optional rounded corner radius
@@ -64,7 +67,7 @@ svg_rect_cornerRadius_y f (SVG_Rect x1 x2 x3 x4 x5 x6)
 {-# INLINE svg_rect_cornerRadius_y #-}
 
 -- | Lens for the @Width@ of a @SVG_Rect@
-svg_rect_width :: Lens' SVG_Rect Width
+svg_rect_width :: Lens' SVG_Rect (Width LengthOrPercentage)
 svg_rect_width f (SVG_Rect x1 x2 x3 x4 x5 x6)
   = fmap (\y1 -> SVG_Rect x1 x2 y1 x4 x5 x6) (f x3)
 {-# INLINE svg_rect_width #-}

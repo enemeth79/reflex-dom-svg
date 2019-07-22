@@ -4,7 +4,7 @@
 -- {-# LANGUAGE OverloadedStrings     #-}
 {-# LANGUAGE RecordWildCards       #-}
 {-# LANGUAGE TypeFamilies          #-}
--- | Types and function for the @Radius@ wrapper.
+-- | Types and function for the @ViewBox@ wrapper.
 module Reflex.Dom.Widget.SVG.Types.ViewBox
   ( ViewBox (..)
   , viewBox_height
@@ -15,19 +15,20 @@ module Reflex.Dom.Widget.SVG.Types.ViewBox
   )
   where
 
-import           Control.Lens                         (Lens', (^.), _Wrapped)
+import           Control.Lens                           (Lens', (^.), _Wrapped)
 
-import           Data.Text                            (Text)
-import qualified Data.Text                            as Text
+import           Data.Text                              (Text)
+import qualified Data.Text                              as Text
 
-import           Reflex.Dom.Widget.SVG.Types.Internal (Height, Width)
+import           Reflex.Dom.Widget.SVG.Types.Internal   (Height)
+import           Reflex.Dom.Widget.SVG.Types.Properties (Width)
 
 
 -- | SVG @viewBox@ attribute
 data ViewBox = ViewBox
   { _viewBox_min_X  :: Float
   , _viewBox_min_Y  :: Float
-  , _viewBox_width  :: Width
+  , _viewBox_width  :: Width Float
   , _viewBox_height :: Height
   }
   deriving (Eq, Show)
@@ -43,7 +44,7 @@ viewBox_min_y f (ViewBox minX minY w h) = fmap (\minY' -> ViewBox minX minY' w h
 {-# INLINE viewBox_min_y #-}
 
 -- | Lens for @_viewBox_width@ attribute on @ViewBox@
-viewBox_width :: Lens' ViewBox Width
+viewBox_width :: Lens' ViewBox (Width Float)
 viewBox_width f (ViewBox minX minY w h) = fmap (\w' -> ViewBox minX minY w' h) (f w)
 {-# INLINE viewBox_width #-}
 

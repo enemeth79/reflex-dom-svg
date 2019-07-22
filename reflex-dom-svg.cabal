@@ -40,6 +40,15 @@ library
                      , Reflex.Dom.Widget.SVG.Types.Elements.SVG_PolyLine
                      , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Rect
                      , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Svg
+                     , Reflex.Dom.Widget.SVG.Types.Properties
+                     , Reflex.Dom.Widget.SVG.Types.Properties.Width
+                     , Reflex.Dom.Widget.CSS
+                     , Reflex.Dom.Widget.CSS.DataTypes
+                     , Reflex.Dom.Widget.CSS.DataTypes.Dimensions
+                     , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Angle
+                     , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Length
+                     , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage
+                     , Reflex.Dom.Widget.CSS.DataTypes.Percentage
 
   build-depends:       base >=4.9 && <=4.12
                      , text >= 1.2 && < 1.3

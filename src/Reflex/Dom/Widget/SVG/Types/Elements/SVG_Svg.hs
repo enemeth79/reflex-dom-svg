@@ -13,34 +13,41 @@ module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Svg
   )
   where
 
-import           Control.Lens                                    (Lens', at, to,
-                                                                  (.~), (^.),
-                                                                  (^?), _Just)
+import           Control.Lens                                             (Lens',
+                                                                           at,
+                                                                           to,
+                                                                           (.~),
+                                                                           (^.),
+                                                                           (^?),
+                                                                           _Just)
 
-import           Data.Function                                   ((&))
+import           Data.Function                                            ((&))
 
-import           Data.Text                                       (Text)
+import           Data.Text                                                (Text)
 
-import           Data.Map                                        (Map)
-import qualified Data.Map                                        as Map
+import           Data.Map                                                 (Map)
+import qualified Data.Map                                                 as Map
 
-import           Reflex                                          (Dynamic)
-import qualified Reflex                                          as R
-import           Reflex.Dom.Core                                 (DomBuilder, DomBuilderSpace,
-                                                                  Element,
-                                                                  EventResult,
-                                                                  PostBuild)
+import           Reflex                                                   (Dynamic)
+import qualified Reflex                                                   as R
+import           Reflex.Dom.Core                                          (DomBuilder,
+                                                                           DomBuilderSpace,
+                                                                           Element,
+                                                                           EventResult,
+                                                                           PostBuild)
 
-import           Reflex.Dom.Widget.SVG.Types.Internal            (Height, Width)
-import           Reflex.Dom.Widget.SVG.Types.Internal.Helper     (wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.Internal                     (Height)
+import           Reflex.Dom.Widget.SVG.Types.Internal.Helper              (wrappedToText)
 
+import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage (LengthOrPercentage (..))
 import           Reflex.Dom.Widget.SVG.Types.PreserveAspectRatio
-import           Reflex.Dom.Widget.SVG.Types.SVGEl               (svgElDynAttr')
+import           Reflex.Dom.Widget.SVG.Types.Properties                   (Width)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl                        (svgElDynAttr')
 import           Reflex.Dom.Widget.SVG.Types.ViewBox
 
 -- | Minimum information required for building a SVG root element.
 data SVG_Svg = SVG_Svg
-  { _svg_root_width               :: Width
+  { _svg_root_width               :: Width LengthOrPercentage
   , _svg_root_height              :: Height
   , _svg_root_viewBox             :: Maybe ViewBox
   , _svg_root_preserveAspectRatio :: Maybe PreserveAspectRatio
@@ -54,7 +61,7 @@ svg_root_height f (SVG_Svg x1 x2 v p) = fmap (\x2' -> SVG_Svg x1 x2' v p) (f x2)
 {-# INLINE svg_root_height #-}
 
 -- | Lens for @Width@ attribute on @SVG_Svg@
-svg_root_width :: Lens' SVG_Svg Width
+svg_root_width :: Lens' SVG_Svg (Width LengthOrPercentage)
 svg_root_width f (SVG_Svg x1 x2 v p) = fmap (\x1' -> SVG_Svg x1' x2 v p) (f x1)
 {-# INLINE svg_root_width #-}
 

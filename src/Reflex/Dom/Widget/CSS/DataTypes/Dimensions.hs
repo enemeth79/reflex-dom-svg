@@ -2,6 +2,7 @@
 module Reflex.Dom.Widget.CSS.DataTypes.Dimensions
   (
     module Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Angle
+  , module Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Frequency
   , module Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Length
   , module Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage
   , module Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Time
@@ -9,6 +10,7 @@ module Reflex.Dom.Widget.CSS.DataTypes.Dimensions
   where
 
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Angle
+import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Frequency
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Length
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Time

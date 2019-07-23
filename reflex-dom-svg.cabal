@@ -46,6 +46,7 @@ library
                      , Reflex.Dom.Widget.CSS.DataTypes
                      , Reflex.Dom.Widget.CSS.DataTypes.Dimensions
                      , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Angle
+                     , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Frequency
                      , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Length
                      , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage
                      , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Time

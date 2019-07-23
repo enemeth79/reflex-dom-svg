@@ -13,7 +13,7 @@ module Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Angle
 
 import           Control.Lens                                (Prism', prism)
 
-import           Data.Text                                   (Text)
+import           Data.Text                                   (Text, unpack)
 
 import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (floatToText)
 
@@ -23,7 +23,10 @@ data Angle
   | Grad Float
   | Rad Float
   | Turn Float
-  deriving (Eq, Show)
+  deriving Eq
+
+instance Show Angle where
+  show = unpack . angleToText
 
 -- | Classy Prism set for the @Angle@ type
 class AsAngle r where

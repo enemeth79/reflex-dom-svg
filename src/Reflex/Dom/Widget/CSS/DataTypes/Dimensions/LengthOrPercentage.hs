@@ -9,7 +9,8 @@ module Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage
   , lengthOrPercentageToText
   ) where
 
-import           Data.Text                                         (Text)
+import           Data.Text                                         (Text,
+                                                                    unpack)
 
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Length
 import           Reflex.Dom.Widget.CSS.DataTypes.Percentage
@@ -20,7 +21,10 @@ import           Reflex.Dom.Widget.CSS.DataTypes.Percentage
 data LengthOrPercentage
   = Length Length -- ^ Relative length units specify a length relative to another length.
   | Percent Percentage
-  deriving (Eq, Show)
+  deriving Eq
+
+instance Show LengthOrPercentage where
+  show = unpack . lengthOrPercentageToText
 
 lengthOrPercentageToText :: LengthOrPercentage -> Text
 lengthOrPercentageToText (Length l)  = lengthToText l

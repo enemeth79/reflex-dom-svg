@@ -8,7 +8,6 @@ module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Animate
   ( AnimFrom (..)
   , AnimTo (..)
   , AnimDuration (..)
-  , AsAnimDuration (..)
   , SVG_Animate (..)
   , svg_animate_attributeName
   , svg_animate_from
@@ -19,38 +18,38 @@ module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Animate
   , animate_
   ) where
 
-import           Control.Lens                                (Lens', Prism',
-                                                              Rewrapped,
-                                                              Unwrapped,
-                                                              Wrapped (..), at,
-                                                              iso, prism, to,
-                                                              (?~), (^.),
-                                                              _Wrapped)
+import           Control.Lens                                    (Lens',
+                                                                  Rewrapped,
+                                                                  Unwrapped,
+                                                                  Wrapped (..),
+                                                                  at, iso, to,
+                                                                  (?~), (^.),
+                                                                  _Wrapped)
 
-import           Data.Function                               ((&))
+import           Data.Function                                   ((&))
 
-import           Data.Semigroup                              ((<>))
+import           Data.Text                                       (Text)
+import           Data.Text.Lens                                  (packed)
 
-import           Data.Text                                   (Text, pack)
-import           Data.Text.Lens                              (packed)
+import           Data.Map                                        (Map)
 
-import           Data.Map                                    (Map)
+import           GHC.Word                                        (Word16)
 
-import           GHC.Word                                    (Word16)
+import           Reflex                                          (Dynamic)
+import qualified Reflex                                          as R
+import           Reflex.Dom.Core                                 (DomBuilder, DomBuilderSpace,
+                                                                  Element,
+                                                                  EventResult,
+                                                                  PostBuild)
 
-import           Reflex                                      (Dynamic)
-import qualified Reflex                                      as R
-import           Reflex.Dom.Core                             (DomBuilder,
-                                                              DomBuilderSpace,
-                                                              Element,
-                                                              EventResult,
-                                                              PostBuild)
+import           Reflex.Dom.Widget.SVG.Types.Internal            (AttributeName (..),
+                                                                  RepeatCount (..))
+import           Reflex.Dom.Widget.SVG.Types.Internal.Helper     (wrappedToText)
 
-import           Reflex.Dom.Widget.SVG.Types.Internal        (AttributeName (..),
-                                                              RepeatCount (..))
-import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl               (svgElDynAttr_)
 
-import           Reflex.Dom.Widget.SVG.Types.SVGEl           (svgElDynAttr_)
+import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Time (Time (..))
+
 
 -- | <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/from from> attribute
 newtype AnimFrom      = AnimFrom Word16 deriving (Eq, Show)
@@ -68,38 +67,14 @@ instance Wrapped AnimTo where
   type Unwrapped AnimTo = Word16
   _Wrapped' = iso (\ (AnimTo x) -> x) AnimTo
 
--- | We don't allow for negative animation durations, and currently we're only
--- interested in animations that last a matter of seconds or milliseconds.
-data AnimDuration
-  = Secs Word16
-  | MSecs Word16
-  deriving (Eq, Show)
+-- | <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dur dur> attribute
+newtype AnimDuration = AnimDuration Time deriving (Eq, Show)
 
--- | Classy Prism set for the @AnimDuration@ type
-class AsAnimDuration r where
-  _AnimDuration :: Prism' r AnimDuration -- ^ General prism for when you have to deal with all of the constructors
-  _Secs :: Prism' r Word16               -- ^ Prism for Seconds
-  _MSecs :: Prism' r Word16              -- ^ Prism for Milliseconds
-  _Secs = _AnimDuration . _Secs
-  _MSecs = _AnimDuration . _MSecs
+instance AnimDuration ~ t => Rewrapped AnimDuration t
+instance Wrapped AnimDuration where
+  type Unwrapped AnimDuration = Time
+  _Wrapped' = iso (\ (AnimDuration x) -> x) AnimDuration
 
-instance AsAnimDuration AnimDuration where
-  _AnimDuration = id
-  _Secs = prism Secs
-    (\case Secs d -> Right d
-           x       -> Left x
-    )
-  _MSecs = prism MSecs
-    (\case MSecs d -> Right d
-           x        -> Left x
-    )
-
-toText :: String -> Word16 -> Text
-toText s = pack . (<> s) . show
-
-animDurationToText :: AnimDuration -> Text
-animDurationToText (Secs s)   = toText "s" s
-animDurationToText (MSecs ms) = toText "ms" ms
 
 -- | Properties for the <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animate \<animate\>> element.
 data SVG_Animate = SVG_Animate
@@ -149,7 +124,7 @@ makeAnimateProps a = mempty
   & at "attributeName" ?~ a ^. svg_animate_attributeName . _Wrapped
   & at "from"          ?~ a ^. svg_animate_from . wrappedToText
   & at "to"            ?~ a ^. svg_animate_to . wrappedToText
-  & at "dur"           ?~ a ^. svg_animate_dur . to animDurationToText
+  & at "dur"           ?~ a ^. svg_animate_dur . wrappedToText -- to animDurationToText
   & at "repeatCount"   ?~ a ^. svg_animate_repeatCount . to show . packed
 
 

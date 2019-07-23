@@ -4,12 +4,14 @@ module Reflex.Dom.Widget.CSS.DataTypes.Dimensions
     module Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Angle
   , module Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Length
   , module Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage
+  , module Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Time
   )
   where
 
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Angle
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Length
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage
+import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Time
 
 
 -- | <https://www.w3.org/TR/css-values/#dimensions \<dimension\> >.

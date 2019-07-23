@@ -48,6 +48,7 @@ library
                      , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Angle
                      , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Length
                      , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage
+                     , Reflex.Dom.Widget.CSS.DataTypes.Dimensions.Time
                      , Reflex.Dom.Widget.CSS.DataTypes.Percentage
 
   build-depends:       base >=4.9 && <=4.12

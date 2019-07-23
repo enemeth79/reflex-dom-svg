@@ -175,7 +175,7 @@ exampleUsage = do
         ( S.AttributeName "x" )
         ( S.AnimFrom 10 )
         ( S.AnimTo 100 )
-        ( S.Secs 10 )
+        ( S.AnimDuration (S.Secs 10) )
         ( S.Indefinite )
     -- This is the same as having written: <animate attributeName="x" from="10" to="100" dur="10s" repeatCount="indefinite"/>
     dAnimCY = pure $
@@ -183,7 +183,7 @@ exampleUsage = do
         ( S.AttributeName "cy" )
         ( S.AnimFrom 200 )
         ( S.AnimTo 100 )
-        ( S.Secs 10 )
+        ( S.AnimDuration (S.Secs 10) )
         ( S.Indefinite )
     -- This is the same as having written: <animate attributeName="cy" from="200" to="100" dur="10s" repeatCount="indefinite"/>
 

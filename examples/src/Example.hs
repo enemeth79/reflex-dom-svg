@@ -34,7 +34,7 @@ exampleUsage = do
     dSvgProps = pure $
       S.SVG_Svg
         (S.Width (S.Length (S.Px 400)))
-        (S.Height 300)
+        (S.Height (S.Length (S.Px 300)))
         Nothing  -- with no viewbox
         -- (Just  -- with viewbox
         --   (S.ViewBox 0 0 (S.Width 30) (S.Height 40)))
@@ -76,7 +76,7 @@ exampleUsage = do
         (S._PosX # 40.0)
         (S._PosY # 40.0)
         (S.Width (S.Length (S.Px 50.0)))
-        (S.Height 50.0)
+        (S.Height (S.Length (S.Px 50.0)))
         Nothing
         Nothing
     -- This is the same as writing: <rect x="40" y="40" height="50" width="50">.
@@ -91,7 +91,7 @@ exampleUsage = do
         (S._PosX # 20.0)
         (S._PosY # 20.0)
         (S.Width (S.Length (S.Px 50.0)))
-        (S.Height 50.0)
+        (S.Height (S.Length (S.Px 50.0)))
         (15.0 ^? from S._CornerRadiusX)
         (15.0 ^? from S._CornerRadiusY)
     -- This is the same as <rect x="20" y="20" height="50" width="50" rx="15" ry="15">.

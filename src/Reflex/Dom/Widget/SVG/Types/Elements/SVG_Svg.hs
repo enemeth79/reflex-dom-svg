@@ -36,19 +36,18 @@ import           Reflex.Dom.Core                                          (DomBu
                                                                            EventResult,
                                                                            PostBuild)
 
-import           Reflex.Dom.Widget.SVG.Types.Internal                     (Height)
 import           Reflex.Dom.Widget.SVG.Types.Internal.Helper              (wrappedToText)
 
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage (LengthOrPercentage (..))
 import           Reflex.Dom.Widget.SVG.Types.PreserveAspectRatio
-import           Reflex.Dom.Widget.SVG.Types.Properties                   (Width)
+import           Reflex.Dom.Widget.SVG.Types.Properties                   (Width, Height)
 import           Reflex.Dom.Widget.SVG.Types.SVGEl                        (svgElDynAttr')
 import           Reflex.Dom.Widget.SVG.Types.ViewBox
 
 -- | Minimum information required for building a SVG root element.
 data SVG_Svg = SVG_Svg
   { _svg_root_width               :: Width LengthOrPercentage
-  , _svg_root_height              :: Height
+  , _svg_root_height              :: Height LengthOrPercentage
   , _svg_root_viewBox             :: Maybe ViewBox
   , _svg_root_preserveAspectRatio :: Maybe PreserveAspectRatio
   }
@@ -56,7 +55,7 @@ data SVG_Svg = SVG_Svg
 
 
 -- | Lens for @Height@ attribute on @SVG_Svg@
-svg_root_height :: Lens' SVG_Svg Height
+svg_root_height :: Lens' SVG_Svg (Height LengthOrPercentage)
 svg_root_height f (SVG_Svg x1 x2 v p) = fmap (\x2' -> SVG_Svg x1 x2' v p) (f x2)
 {-# INLINE svg_root_height #-}
 

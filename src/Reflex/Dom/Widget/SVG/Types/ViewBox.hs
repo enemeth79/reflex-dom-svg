@@ -1,7 +1,6 @@
 {-# LANGUAGE FlexibleContexts      #-}
 {-# LANGUAGE FlexibleInstances     #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
--- {-# LANGUAGE OverloadedStrings     #-}
 {-# LANGUAGE RecordWildCards       #-}
 {-# LANGUAGE TypeFamilies          #-}
 -- | Types and function for the @ViewBox@ wrapper.
@@ -20,8 +19,7 @@ import           Control.Lens                           (Lens', (^.), _Wrapped)
 import           Data.Text                              (Text)
 import qualified Data.Text                              as Text
 
-import           Reflex.Dom.Widget.SVG.Types.Internal   (Height)
-import           Reflex.Dom.Widget.SVG.Types.Properties (Width)
+import           Reflex.Dom.Widget.SVG.Types.Properties (Width, Height)
 
 
 -- | SVG @viewBox@ attribute
@@ -29,7 +27,7 @@ data ViewBox = ViewBox
   { _viewBox_min_X  :: Float
   , _viewBox_min_Y  :: Float
   , _viewBox_width  :: Width Float
-  , _viewBox_height :: Height
+  , _viewBox_height :: Height Float
   }
   deriving (Eq, Show)
 
@@ -49,7 +47,7 @@ viewBox_width f (ViewBox minX minY w h) = fmap (\w' -> ViewBox minX minY w' h) (
 {-# INLINE viewBox_width #-}
 
 -- | Lens for @_viewBox_min_X@ attribute on @ViewBox@
-viewBox_height :: Lens' ViewBox Height
+viewBox_height :: Lens' ViewBox (Height Float)
 viewBox_height f (ViewBox minX minY w h) = fmap (ViewBox minX minY w) (f h)
 {-# INLINE viewBox_height #-}
 

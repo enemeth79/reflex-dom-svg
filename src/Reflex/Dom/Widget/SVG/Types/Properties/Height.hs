@@ -4,9 +4,9 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies          #-}
 -- |
-module Reflex.Dom.Widget.SVG.Types.Properties.Width
-  ( Width (..)
-  , _Width
+module Reflex.Dom.Widget.SVG.Types.Properties.Height
+  ( Height (..)
+  , _Height
   ) where
 
 import           Control.Lens                                                  (Iso',
@@ -16,25 +16,24 @@ import           Control.Lens                                                  (
                                                                                 _Wrapped)
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage
 
--- | Wrap the @Float@ and @LengthOrPercentage@ value with something more meaningful.
-newtype Width w =
-  Width w
+-- | Wrap the @Float@ or @LengthOrPercentage@ value with something more meaningful.
+newtype Height w =
+  Height w
   deriving (Eq, Show)
 
-instance (Width Float) ~ t => Rewrapped (Width Float) t
-instance (Width LengthOrPercentage) ~ t => Rewrapped (Width LengthOrPercentage) t
+instance (Height Float) ~ t => Rewrapped (Height Float) t
+instance (Height LengthOrPercentage) ~ t => Rewrapped (Height LengthOrPercentage) t
 
 
-instance Wrapped (Width w) where
-  type Unwrapped (Width w) = w
-  _Wrapped' = iso (\(Width x) -> x) Width
+instance Wrapped (Height w) where
+  type Unwrapped (Height w) = w
+  _Wrapped' = iso (\(Height x) -> x) Height
 
+_HeightLOP :: Iso' (Height LengthOrPercentage) LengthOrPercentage
+_HeightLOP = _Wrapped
 
-_WidthLOP :: Iso' (Width LengthOrPercentage) LengthOrPercentage
-_WidthLOP = _Wrapped
+_HeightFloat :: Iso' (Height Float) Float
+_HeightFloat = _Wrapped
 
-_WidthFloat :: Iso' (Width Float) Float
-_WidthFloat = _Wrapped
-
-_Width :: Iso' (Width w) w
-_Width = _Wrapped'
+_Height :: Iso' (Height w) w
+_Height = _Wrapped'

@@ -29,7 +29,7 @@ import           Reflex.Dom.Core                             (DomBuilder,
 import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
 import           Reflex.Dom.Widget.SVG.Types.Pos             (CenterX, CenterY,
                                                               Pos)
-import           Reflex.Dom.Widget.SVG.Types.Radius          (Radius)
+import           Reflex.Dom.Widget.SVG.Types.Properties      (Radius)
 import           Reflex.Dom.Widget.SVG.Types.SVGEl           (svgElDynAttr')
 
 -- | Properties for the <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle \<circle\>> element.

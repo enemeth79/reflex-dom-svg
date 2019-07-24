@@ -101,14 +101,14 @@ exampleUsage = do
       S.SVG_Circle
         (S._PosCenterX # 200.0)
         (S._PosCenterY # 200.0)
-        (S._Radius # 70.0)
+        (S._Radius # S.Length (S.Px 70.0))
     -- This is the same as writing: <circle cx="200" cy="200" r="70">.
 
     -- Build a ``<ellipse>``.
     dEllipse = pure $
       S.SVG_Ellipse
-        (S._RadiusX # 100.0)
-        (S._RadiusY # 50.0)
+        (S._RadiusX # S.Length (S.Px 100.0))
+        (S._RadiusY # S.Length (S.Px 50.0))
         (S._PosCenterX # 300.0)
         (S._PosCenterY # 150.0)
     -- This is the same as writing: <ellipse cx="300" cy="150" rx="100" ry="50">.
@@ -204,14 +204,14 @@ exampleUsage = do
           S.SVG_Circle
             (S._PosCenterX # 240.0)
             (S._PosCenterY # 240.0)
-            (S._Radius # 25.0))
+            (S._Radius # S.Length (S.Px 25.0)))
         RD.blank
       S.circle_ mempty
         (pure $
           S.SVG_Circle
             (S._PosCenterX # 260.0)
             (S._PosCenterY # 260.0)
-            (S._Radius # 25.0))
+            (S._Radius # S.Length (S.Px 25.0)))
         RD.blank
     _ <- S.path_ attrsRB dPath RD.blank
     S.rect_ attrsYG dRect3

@@ -37,13 +37,13 @@ import           Reflex.Dom.Core                                               (
                                                                                 PostBuild)
 
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage (LengthOrPercentage (..))
-import           Reflex.Dom.Widget.SVG.Types.CornerRadius                      (CornerRadius)
 
 import           Reflex.Dom.Widget.SVG.Types.Internal.Helper                   (wrappedToText)
 import           Reflex.Dom.Widget.SVG.Types.Pos                               (Pos,
                                                                                 X,
                                                                                 Y)
-import           Reflex.Dom.Widget.SVG.Types.Properties                        (Height,
+import           Reflex.Dom.Widget.SVG.Types.Properties                        (CornerRadius,
+                                                                                Height,
                                                                                 Width)
 
 import           Reflex.Dom.Widget.SVG.Types.SVGEl                             (svgElDynAttr')

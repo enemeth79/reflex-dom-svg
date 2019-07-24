@@ -3,7 +3,6 @@ module Reflex.Dom.Widget.SVG.Types
   (
     module Reflex.Dom.Widget.SVG.Types.Internal
 
-  , module Reflex.Dom.Widget.SVG.Types.CornerRadius
   , module Reflex.Dom.Widget.SVG.Types.Pos
   , module Reflex.Dom.Widget.SVG.Types.Properties
   , module Reflex.Dom.Widget.SVG.Types.PreserveAspectRatio
@@ -16,7 +15,6 @@ module Reflex.Dom.Widget.SVG.Types
 
 import           Reflex.Dom.Widget.SVG.Types.Internal
 
-import           Reflex.Dom.Widget.SVG.Types.CornerRadius
 import           Reflex.Dom.Widget.SVG.Types.Pos
 import           Reflex.Dom.Widget.SVG.Types.PreserveAspectRatio
 import           Reflex.Dom.Widget.SVG.Types.Properties

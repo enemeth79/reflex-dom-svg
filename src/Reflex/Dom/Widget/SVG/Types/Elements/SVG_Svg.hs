@@ -13,35 +13,37 @@ module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Svg
   )
   where
 
-import           Control.Lens                                             (Lens',
-                                                                           at,
-                                                                           to,
-                                                                           (.~),
-                                                                           (^.),
-                                                                           (^?),
-                                                                           _Just)
+import           Control.Lens                                                  (Lens',
+                                                                                at,
+                                                                                to,
+                                                                                (.~),
+                                                                                (^.),
+                                                                                (^?),
+                                                                                _Just)
 
-import           Data.Function                                            ((&))
+import           Data.Function                                                 ((&))
 
-import           Data.Text                                                (Text)
+import           Data.Text                                                     (Text)
 
-import           Data.Map                                                 (Map)
-import qualified Data.Map                                                 as Map
+import           Data.Map                                                      (Map)
+import qualified Data.Map                                                      as Map
 
-import           Reflex                                                   (Dynamic)
-import qualified Reflex                                                   as R
-import           Reflex.Dom.Core                                          (DomBuilder,
-                                                                           DomBuilderSpace,
-                                                                           Element,
-                                                                           EventResult,
-                                                                           PostBuild)
+import           Reflex                                                        (Dynamic)
+import qualified Reflex                                                        as R
+import           Reflex.Dom.Core                                               (DomBuilder,
+                                                                                DomBuilderSpace,
+                                                                                Element,
+                                                                                EventResult,
+                                                                                PostBuild)
 
-import           Reflex.Dom.Widget.SVG.Types.Internal.Helper              (wrappedToText)
+import           Reflex.Dom.Widget.SVG.Types.Internal.Helper                   (wrappedToText)
 
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage (LengthOrPercentage (..))
-import           Reflex.Dom.Widget.SVG.Types.PreserveAspectRatio
-import           Reflex.Dom.Widget.SVG.Types.Properties                   (Width, Height)
-import           Reflex.Dom.Widget.SVG.Types.SVGEl                        (svgElDynAttr')
+import           Reflex.Dom.Widget.SVG.Types.Properties                        (Height,
+                                                                                PreserveAspectRatio,
+                                                                                Width,
+                                                                                makePreserveAspectRatio)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl                             (svgElDynAttr')
 import           Reflex.Dom.Widget.SVG.Types.ViewBox
 
 -- | Minimum information required for building a SVG root element.

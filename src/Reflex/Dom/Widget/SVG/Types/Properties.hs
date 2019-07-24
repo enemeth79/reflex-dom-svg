@@ -3,6 +3,7 @@ module Reflex.Dom.Widget.SVG.Types.Properties
   (
     module Reflex.Dom.Widget.SVG.Types.Properties.CornerRadius
   , module Reflex.Dom.Widget.SVG.Types.Properties.Height
+  , module Reflex.Dom.Widget.SVG.Types.Properties.PreserveAspectRatio
   , module Reflex.Dom.Widget.SVG.Types.Properties.Radius
   , module Reflex.Dom.Widget.SVG.Types.Properties.Width
   )
@@ -10,5 +11,6 @@ module Reflex.Dom.Widget.SVG.Types.Properties
 
 import           Reflex.Dom.Widget.SVG.Types.Properties.CornerRadius
 import           Reflex.Dom.Widget.SVG.Types.Properties.Height
+import           Reflex.Dom.Widget.SVG.Types.Properties.PreserveAspectRatio
 import           Reflex.Dom.Widget.SVG.Types.Properties.Radius
 import           Reflex.Dom.Widget.SVG.Types.Properties.Width

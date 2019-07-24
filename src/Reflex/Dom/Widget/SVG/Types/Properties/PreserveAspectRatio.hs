@@ -4,7 +4,7 @@
 {-# LANGUAGE RecordWildCards       #-}
 {-# LANGUAGE TypeFamilies          #-}
 -- | Types and function for the @PreserveAspectRatio@ wrapper.
-module Reflex.Dom.Widget.SVG.Types.PreserveAspectRatio
+module Reflex.Dom.Widget.SVG.Types.Properties.PreserveAspectRatio
   ( PreserveAspectRatio (..)
   , Align (..)
   , MeetOrSlice (..)

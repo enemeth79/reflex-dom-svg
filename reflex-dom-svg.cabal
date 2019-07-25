@@ -25,7 +25,6 @@ library
                      , Reflex.Dom.Widget.SVG.Types.Internal.Pos
                      , Reflex.Dom.Widget.SVG.Types.Internal
                      , Reflex.Dom.Widget.SVG.Types.SVGEl
-                     , Reflex.Dom.Widget.SVG.Types.ViewBox
                      , Reflex.Dom.Widget.SVG.Types.Elements
                      , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Animate
                      , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Circle
@@ -42,6 +41,7 @@ library
                      , Reflex.Dom.Widget.SVG.Types.Properties.Height
                      , Reflex.Dom.Widget.SVG.Types.Properties.PreserveAspectRatio
                      , Reflex.Dom.Widget.SVG.Types.Properties.Radius
+                     , Reflex.Dom.Widget.SVG.Types.Properties.ViewBox
                      , Reflex.Dom.Widget.SVG.Types.Properties.Width
                      , Reflex.Dom.Widget.CSS
                      , Reflex.Dom.Widget.CSS.DataTypes

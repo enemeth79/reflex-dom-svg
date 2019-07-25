@@ -4,7 +4,7 @@
 {-# LANGUAGE RecordWildCards       #-}
 {-# LANGUAGE TypeFamilies          #-}
 -- | Types and function for the @ViewBox@ wrapper.
-module Reflex.Dom.Widget.SVG.Types.ViewBox
+module Reflex.Dom.Widget.SVG.Types.Properties.ViewBox
   ( ViewBox (..)
   , viewBox_height
   , viewBox_width
@@ -14,12 +14,14 @@ module Reflex.Dom.Widget.SVG.Types.ViewBox
   )
   where
 
-import           Control.Lens                           (Lens', (^.), _Wrapped)
+import           Control.Lens                                  (Lens', (^.),
+                                                                _Wrapped)
 
-import           Data.Text                              (Text)
-import qualified Data.Text                              as Text
+import           Data.Text                                     (Text)
+import qualified Data.Text                                     as Text
 
-import           Reflex.Dom.Widget.SVG.Types.Properties (Width, Height)
+import           Reflex.Dom.Widget.SVG.Types.Properties.Height (Height)
+import           Reflex.Dom.Widget.SVG.Types.Properties.Width  (Width)
 
 
 -- | SVG @viewBox@ attribute

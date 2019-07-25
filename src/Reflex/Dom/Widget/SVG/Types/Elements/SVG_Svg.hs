@@ -41,10 +41,12 @@ import           Reflex.Dom.Widget.SVG.Types.Internal.Helper                   (
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage (LengthOrPercentage (..))
 import           Reflex.Dom.Widget.SVG.Types.Properties                        (Height,
                                                                                 PreserveAspectRatio,
+                                                                                ViewBox,
                                                                                 Width,
-                                                                                makePreserveAspectRatio)
+                                                                                makePreserveAspectRatio,
+                                                                                makeViewBox)
 import           Reflex.Dom.Widget.SVG.Types.SVGEl                             (svgElDynAttr')
-import           Reflex.Dom.Widget.SVG.Types.ViewBox
+
 
 -- | Minimum information required for building a SVG root element.
 data SVG_Svg = SVG_Svg

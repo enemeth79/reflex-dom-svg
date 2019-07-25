@@ -27,7 +27,7 @@ import           Reflex.Dom.Core                             (DomBuilder,
                                                               PostBuild)
 
 import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
-import           Reflex.Dom.Widget.SVG.Types.Pos             (CenterX, CenterY,
+import           Reflex.Dom.Widget.SVG.Types.Internal.Pos    (CenterX, CenterY,
                                                               Pos, X, Y)
 import           Reflex.Dom.Widget.SVG.Types.Properties      (Radius)
 import           Reflex.Dom.Widget.SVG.Types.SVGEl           (svgElDynAttr')

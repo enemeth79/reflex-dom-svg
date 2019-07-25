@@ -15,7 +15,7 @@ import           Control.Lens                               (Iso', Rewrapped,
                                                              _Wrapped)
 
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions (LengthOrPercentage)
-import           Reflex.Dom.Widget.SVG.Types.Pos            (X, Y)
+import           Reflex.Dom.Widget.SVG.Types.Internal.Pos   (X, Y)
 
 
 -- | The value of a @Radius@ is just a @\<length-percentage\>@. But we can do better so we wrap

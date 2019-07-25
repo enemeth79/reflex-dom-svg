@@ -63,7 +63,7 @@ import           Reflex.Dom.Core                             (DomBuilder,
                                                               PostBuild, (=:))
 
 import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
-import           Reflex.Dom.Widget.SVG.Types.Pos             (Pos, X, Y)
+import           Reflex.Dom.Widget.SVG.Types.Internal.Pos    (Pos, X, Y)
 import           Reflex.Dom.Widget.SVG.Types.SVGEl           (svgElDynAttr')
 
 -- | For a bit of brevity we wrap a combined X,Y position in a tuple tucked in a newtype.

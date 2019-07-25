@@ -39,7 +39,7 @@ import           Reflex.Dom.Core                                               (
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions.LengthOrPercentage (LengthOrPercentage (..))
 
 import           Reflex.Dom.Widget.SVG.Types.Internal.Helper                   (wrappedToText)
-import           Reflex.Dom.Widget.SVG.Types.Pos                               (Pos,
+import           Reflex.Dom.Widget.SVG.Types.Internal.Pos                      (Pos,
                                                                                 X,
                                                                                 Y)
 import           Reflex.Dom.Widget.SVG.Types.Properties                        (CornerRadius,

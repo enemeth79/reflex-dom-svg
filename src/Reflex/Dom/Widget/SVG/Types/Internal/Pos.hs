@@ -4,7 +4,7 @@
 {-# LANGUAGE TypeFamilies          #-}
 -- | @Pos@ is a general purpose wrapper for the various times we want to
 -- indicate we're using a specific positional value.
-module Reflex.Dom.Widget.SVG.Types.Pos
+module Reflex.Dom.Widget.SVG.Types.Internal.Pos
   ( Pos
   , X
   , Y

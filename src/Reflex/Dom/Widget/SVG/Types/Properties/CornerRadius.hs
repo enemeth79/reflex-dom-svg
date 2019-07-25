@@ -14,7 +14,7 @@ import           Control.Lens                               (Iso', Rewrapped,
                                                              _Wrapped)
 
 import           Reflex.Dom.Widget.CSS.DataTypes.Dimensions (LengthOrPercentage)
-import           Reflex.Dom.Widget.SVG.Types.Pos            (X, Y)
+import           Reflex.Dom.Widget.SVG.Types.Internal.Pos   (X, Y)
 
 -- | Corner Radius is effectively just a @LengthOrPercentage@, but we can do better.
 newtype CornerRadius p =

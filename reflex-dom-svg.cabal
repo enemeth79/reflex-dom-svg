@@ -22,8 +22,8 @@ library
   exposed-modules:     Reflex.Dom.Widget.SVG
                      , Reflex.Dom.Widget.SVG.Types
                      , Reflex.Dom.Widget.SVG.Types.Internal.Helper
+                     , Reflex.Dom.Widget.SVG.Types.Internal.Pos
                      , Reflex.Dom.Widget.SVG.Types.Internal
-                     , Reflex.Dom.Widget.SVG.Types.Pos
                      , Reflex.Dom.Widget.SVG.Types.SVGEl
                      , Reflex.Dom.Widget.SVG.Types.ViewBox
                      , Reflex.Dom.Widget.SVG.Types.Elements

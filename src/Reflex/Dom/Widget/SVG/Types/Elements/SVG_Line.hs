@@ -26,7 +26,7 @@ import           Reflex.Dom.Core                             (DomBuilder,
 import           Data.Text                                   (Text)
 
 import           Reflex.Dom.Widget.SVG.Types.Internal.Helper (wrappedToText)
-import           Reflex.Dom.Widget.SVG.Types.Pos             (Pos, X, Y)
+import           Reflex.Dom.Widget.SVG.Types.Internal.Pos    (Pos, X, Y)
 import           Reflex.Dom.Widget.SVG.Types.SVGEl           (svgElDynAttr')
 
 -- | Properties for the <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line \<line\>> element.

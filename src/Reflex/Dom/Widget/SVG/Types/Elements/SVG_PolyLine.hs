@@ -14,23 +14,25 @@ module Reflex.Dom.Widget.SVG.Types.Elements.SVG_PolyLine
   , polyLine_
   ) where
 
-import           Control.Lens                      (Lens')
+import           Control.Lens                             (Lens')
 
-import           Data.Map                          (Map)
+import           Data.Map                                 (Map)
 
-import           Data.Text                         (Text)
+import           Data.Text                                (Text)
 
-import           Data.List.NonEmpty                (NonEmpty, (<|))
+import           Data.List.NonEmpty                       (NonEmpty, (<|))
 
-import           Reflex                            (Dynamic)
-import qualified Reflex                            as R
-import           Reflex.Dom.Core                   (DomBuilder, DomBuilderSpace,
-                                                    Element, EventResult,
-                                                    PostBuild, (=:))
+import           Reflex                                   (Dynamic)
+import qualified Reflex                                   as R
+import           Reflex.Dom.Core                          (DomBuilder,
+                                                           DomBuilderSpace,
+                                                           Element, EventResult,
+                                                           PostBuild, (=:))
 
 
-import           Reflex.Dom.Widget.SVG.Types.Pos   (Pos, X, Y, makePointsProp)
-import           Reflex.Dom.Widget.SVG.Types.SVGEl (svgElDynAttr')
+import           Reflex.Dom.Widget.SVG.Types.Internal.Pos (Pos, X, Y,
+                                                           makePointsProp)
+import           Reflex.Dom.Widget.SVG.Types.SVGEl        (svgElDynAttr')
 
 -- | Properties for the <https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polyline \<polyline\>> element.
 data SVG_PolyLine = SVG_PolyLine

@@ -14,7 +14,7 @@ import           Data.Monoid                 (mappend, mempty)
 import           Reflex                      (Dynamic, MonadHold)
 import qualified Reflex                      as R
 import           Reflex.Dom                  (mainWidget)
-import           Reflex.Dom.Core             (DomBuilder, PostBuild)
+import           Reflex.Dom.Core             (DomBuilder, PostBuild, text)
 import qualified Reflex.Dom.Core             as RD
 
 import qualified Reflex.Dom.Widget.CSS       as S
@@ -187,6 +187,27 @@ exampleUsage = do
         ( S.Indefinite )
     -- This is the same as having written: <animate attributeName="cy" from="200" to="100" dur="10s" repeatCount="indefinite"/>
 
+    -- Build a ``<text>``.
+    dTextHello = pure $
+      S.SVG_Text
+        (Just (S._PosX # 20.0))  -- x
+        (Just (S._PosY # 120.0))  -- y
+        Nothing  -- dx
+        Nothing  -- dy
+        Nothing  -- rotate
+        Nothing  -- textLength
+        Nothing  -- lengthAdjust
+    -- This is the same as having written: <text x="20.0" y="120.0"/>
+    dTextWorld = pure $
+      S.SVG_Text
+        (Just (S._PosX # 20.0))  -- x
+        (Just (S._PosY # 150.0))  -- y
+        Nothing  -- dx
+        Nothing  -- dy
+        (Just (S.Rotate 45)) -- Nothing  -- rotate
+        (Just (S.TextLength (S.Length (S.Px 100)))) -- Nothing  -- textLength
+        (Just S.LengthAdjust_SpacingAndGlyphs)-- Nothing  -- lengthAdjust
+    -- This is the same as having written: <text lengthAdjust="spacingAndGlyphs" rotate="45.0" textLength="100.0px" x="20.0" y="150.0"/>
 
     -- Finally, put it all together for ``Reflex.Dom`` to add to our page.
 
@@ -214,6 +235,10 @@ exampleUsage = do
             (S._Radius # S.Length (S.Px 25.0)))
         RD.blank
     _ <- S.path_ attrsRB dPath RD.blank
+    _ <- S.text_ mempty dTextHello $
+      RD.text "Hello"
+    _ <- S.text_ attrsBR dTextWorld $
+      RD.text "World"
     S.rect_ attrsYG dRect3
       (S.animate_ dAnimX)  -- animate
 

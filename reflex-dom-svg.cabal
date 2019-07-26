@@ -36,11 +36,15 @@ library
                      , Reflex.Dom.Widget.SVG.Types.Elements.SVG_PolyLine
                      , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Rect
                      , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Svg
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Text
                      , Reflex.Dom.Widget.SVG.Types.Properties
                      , Reflex.Dom.Widget.SVG.Types.Properties.CornerRadius
                      , Reflex.Dom.Widget.SVG.Types.Properties.Height
+                     , Reflex.Dom.Widget.SVG.Types.Properties.LengthAdjust
                      , Reflex.Dom.Widget.SVG.Types.Properties.PreserveAspectRatio
                      , Reflex.Dom.Widget.SVG.Types.Properties.Radius
+                     , Reflex.Dom.Widget.SVG.Types.Properties.Rotate
+                     , Reflex.Dom.Widget.SVG.Types.Properties.TextLength
                      , Reflex.Dom.Widget.SVG.Types.Properties.ViewBox
                      , Reflex.Dom.Widget.SVG.Types.Properties.Width
                      , Reflex.Dom.Widget.CSS

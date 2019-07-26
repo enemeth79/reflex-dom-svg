@@ -37,6 +37,7 @@ library
                      , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Rect
                      , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Svg
                      , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Text
+                     , Reflex.Dom.Widget.SVG.Types.Elements.SVG_Tspan
                      , Reflex.Dom.Widget.SVG.Types.Properties
                      , Reflex.Dom.Widget.SVG.Types.Properties.CornerRadius
                      , Reflex.Dom.Widget.SVG.Types.Properties.Height

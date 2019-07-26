@@ -70,6 +70,22 @@ exampleUsage = do
       & at "fill" ?~ "none"
       & at "stroke" ?~ "orange"
 
+    attrsFonts = mempty
+      & at "font-family" ?~ "serif"
+      & at "font-size" ?~ "12mm"
+      & at "fill" ?~ "navy"
+
+    attrsRoyalBlueBold = mempty
+      & at "font-style" ?~ "bold"
+      & at "stroke" ?~ "royalBlue"
+
+
+    attrsBlueItalic = mempty
+      & at "font-style" ?~ "italic"
+      & at "stroke" ?~ "navy"
+
+
+
     -- Build our first ``<rect>``.
     dRect1 = pure $
       S.SVG_Rect
@@ -209,6 +225,38 @@ exampleUsage = do
         (Just S.LengthAdjust_SpacingAndGlyphs)-- Nothing  -- lengthAdjust
     -- This is the same as having written: <text lengthAdjust="spacingAndGlyphs" rotate="45.0" textLength="100.0px" x="20.0" y="150.0"/>
 
+    dText123 = pure $
+      S.SVG_Text
+        (Just (S._PosX # 20))  -- x
+        (Just (S._PosY # 250))  -- y
+        Nothing
+        Nothing
+        Nothing
+        Nothing
+        Nothing
+
+    dTspan2 = pure $
+      S.SVG_Tspan
+        Nothing
+        (Just (S._PosY # 225))  -- y
+        Nothing
+        Nothing
+        Nothing
+        Nothing
+        Nothing
+
+    dTspan3 = pure $
+      S.SVG_Tspan
+        Nothing
+        (Just (S._PosY # 200))  -- y
+        Nothing
+        Nothing
+        Nothing
+        (Just (S.TextLength (S.Length (S.Px 150)))) -- Nothing  -- textLength
+        (Just S.LengthAdjust_SpacingAndGlyphs)-- Nothing  -- lengthAdjust
+
+
+
     -- Finally, put it all together for ``Reflex.Dom`` to add to our page.
 
   _ <- S.svg_ dSvgProps $ do
@@ -239,6 +287,13 @@ exampleUsage = do
       RD.text "Hello"
     _ <- S.text_ attrsBR dTextWorld $
       RD.text "World"
+    _ <- S.text_ attrsFonts dText123 $ do
+      _ <- RD.text "One,"
+      _ <- S.tspan_ attrsRoyalBlueBold dTspan2 $
+        RD.text "Two,"
+      _ <- S.tspan_ attrsBlueItalic dTspan3 $
+        RD.text "Three!"
+      RD.blank
     S.rect_ attrsYG dRect3
       (S.animate_ dAnimX)  -- animate
 

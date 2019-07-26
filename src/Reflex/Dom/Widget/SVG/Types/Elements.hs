@@ -12,6 +12,7 @@ module Reflex.Dom.Widget.SVG.Types.Elements
   , module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Rect
   , module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Svg
   , module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Text
+  , module Reflex.Dom.Widget.SVG.Types.Elements.SVG_Tspan
   )
   where
 
@@ -26,3 +27,4 @@ import           Reflex.Dom.Widget.SVG.Types.Elements.SVG_PolyLine
 import           Reflex.Dom.Widget.SVG.Types.Elements.SVG_Rect
 import           Reflex.Dom.Widget.SVG.Types.Elements.SVG_Svg
 import           Reflex.Dom.Widget.SVG.Types.Elements.SVG_Text
+import           Reflex.Dom.Widget.SVG.Types.Elements.SVG_Tspan
